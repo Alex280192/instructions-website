@@ -1,8 +1,74 @@
-    <!-- Раздел для сушильной машинки -->
-    <div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions for Washing and Drying Machines</title>
+    <style>
+        .languages, .instruction {
+            display: none; /* Скрыть все списки языков и инструкции по умолчанию */
+        }
+        .language-link, .device-link {
+            cursor: pointer; /* Изменить курсор на указатель при наведении */
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showLanguages(deviceId) {
+            // Скрыть все списки языков и инструкции
+            var allLanguages = document.querySelectorAll('.languages');
+            var allInstructions = document.querySelectorAll('.instruction');
+            allLanguages.forEach(function(language) {
+                language.style.display = 'none';
+            });
+            allInstructions.forEach(function(instruction) {
+                instruction.style.display = 'none';
+            });
+
+            // Показать список языков для выбранного устройства
+            var selectedLanguages = document.getElementById(deviceId);
+            selectedLanguages.style.display = 'block';
+        }
+
+        function showInstruction(languageId) {
+            // Скрыть все инструкции
+            var allInstructions = document.querySelectorAll('.instruction');
+            allInstructions.forEach(function(instruction) {
+                instruction.style.display = 'none';
+            });
+
+            // Показать выбранную инструкцию
+            var selectedInstruction = document.getElementById(languageId);
+            selectedInstruction.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <h1>Выберите устройство / Choose a device</h1>
+
+    <!-- Ссылки на устройства -->
+    <p class="device-link" onclick="showLanguages('washing-languages')">Стиральная машинка / Washing Machine</p>
+    <p class="device-link" onclick="showLanguages('drying-languages')">Сушильная машинка / Drying Machine</p>
+
+    <!-- Список языков для стиральной машинки -->
+    <div id="washing-languages" class="languages">
+        <h2>Стиральная машинка / Washing Machine</h2>
+        <ul>
+            <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
+            <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
+            <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
+            <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
+            <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
+            <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
+            <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
+            <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
+        </ul>
+    </div>
+
+    <!-- Список языков для сушильной машинки -->
+    <div id="drying-languages" class="languages">
         <h2>Сушильная машинка / Drying Machine</h2>
-        <img src="drying_machine.jpg" alt="Drying Machine" width="300">
-        <p>Выберите язык / Choose a language:</p>
         <ul>
             <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
             <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
@@ -11,53 +77,76 @@
             <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
             <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
             <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
-            <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Ср
             <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
         </ul>
-        <!-- Инструкции для сушильной машинки на всех языках -->
-        <div id="drying-polish" class="instruction">
-            <h2>Polski</h2>
-            <p>1. Przygotuj pranie:</p>
-            <p>- Oczyść filtr z kłaczków.</p>
-            <p>- Załaduj pranie do bębna, równomiernie je rozkładając.</p>
-            <p>2. Włącz urządzenie:</p>
-            <p>- Naciśnij przycisk „Power”, aby włączyć suszarkę.</p>
-            <p>3. Wybór programu:</p>
-            <p>- Wybierz odpowiedni program suszenia, jeśli to konieczne. W większości przypadków można po prostu nacisnąć „Start” dla trybu „Auto”.</p>
-            <p>4. Ustawienia dodatkowe:</p>
-            <p>- Opcjonalnie dostosuj czas suszenia i temperaturę.</p>
-            <p>5. Rozpocznij:</p>
-            <p>- Zamknij drzwi i naciśnij „Start”, aby rozpocząć suszenie.</p>
-            <p>6. Czekaj na zakończenie:</p>
-            <p>- Poczekaj, aż cykl suszenia się zakończy. Maszyna zatrzyma się automatycznie.</p>
-            <p>7. Wyjmij pranie:</p>
-            <p>- Ostrożnie wyjmij suche pranie i odłóż je.</p>
-            <p>8. Wyłącz:</p>
-            <p>- Wyłącz suszarkę, naciskając przycisk „Power”.</p>
-        </div>
+    </div>
 
-        <div id="drying-ukrainian" class="instruction">
-            <h2>Українська</h2>
-            <p>1. Підготуйте білизну:</p>
-            <p>- Очистіть фільтр від ворсу.</p>
-            <p>- Завантажте білизну в барабан, рівномірно розподіляючи її.</p>
-            <p>2. Увімкніть:</p>
-            <p>- Натисніть кнопку «Power», щоб увімкнути сушарку.</p>
-            <p>3. Вибір програми:</p>
-            <p>- Виберіть потрібну програму сушіння, якщо необхідно. У більшості випадків можна просто натиснути «Start» для режиму «Auto».</p>
-            <p>4. Додаткові налаштування:</p>
-            <p>- За бажанням налаштуйте час сушіння і температуру.</p>
-            <p>5. Початок:</p>
-            <p>- Закрийте дверцята і натисніть «Start», щоб почати сушіння.</p>
-            <p>6. Очікуйте завершення:</p>
-            <p>- Дочекайтеся завершення циклу сушіння. Машина зупиниться автоматично.</p>
-            <p>7. Вийміть білизну:</p>
-            <p>- Обережно вийміть суху білизну і розкладіть її.</p>
-            <p>8. Вимкніть:</p>
-            <p>- Вимкніть сушарку, натиснувши кнопку «Power».</p>
-        </div>
+    <!-- Инструкции для стиральной машинки -->
+    <div id="washing-polish" class="instruction">
+        <h2>Polski</h2>
+        <p>Текст инструкции на польском для стиральной машинки</p>
+    </div>
+    <div id="washing-ukrainian" class="instruction">
+        <h2>Українська</h2>
+        <p>Текст инструкции на украинском для стиральной машинки</p>
+    </div>
+    <div id="washing-romanian" class="instruction">
+        <h2>Română</h2>
+        <p>Текст инструкции на румынском для стиральной машинки</p>
+    </div>
+    <div id="washing-bulgarian" class="instruction">
+        <h2>Български</h2>
+        <p>Текст инструкции на болгарском для стиральной машинки</p>
+    </div>
+    <div id="washing-russian" class="instruction">
+        <h2>Русский</h2>
+        <p>Текст инструкции на русском для стиральной машинки</p>
+    </div>
+    <div id="washing-hindi" class="instruction">
+        <h2>हिन्दी</h2>
+        <p>Текст инструкции на хинди для стиральной машинки</p>
+    </div>
+    <div id="washing-urdu" class="instruction">
+        <h2>اردو</h2>
+        <p>Текст инструкции на урду для стиральной машинки</p>
+    </div>
+    <div id="washing-serbo-croatian" class="instruction">
+        <h2>Српско-хрватски</h2>
+        <p>Текст инструкции на сербско-хорватском для стиральной машинки</p>
+    </div>
 
-        <!-- Добавьте инструкции для остальных языков аналогично -->
+    <!-- Инструкции для сушильной машинки -->
+    <div id="drying-polish" class="instruction">
+        <h2>Polski</h2>
+        <p>Текст инструкции на польском для сушильной машинки</p>
+    </div>
+    <div id="drying-ukrainian" class="instruction">
+        <h2>Українська</h2>
+        <p>Текст инструкции на украинском для сушильной машинки</p>
+    </div>
+    <div id="drying-romanian" class="instruction">
+        <h2>Română</h2>
+        <p>Текст инструкции на румынском для сушильной машинки</p>
+    </div>
+    <div id="drying-bulgarian" class="instruction">
+        <h2>Български</h2>
+        <p>Текст инструкции на болгарском для сушильной машинки</p>
+    </div>
+    <div id="drying-russian" class="instruction">
+        <h2>Русский</h2>
+        <p>Текст инструкции на русском для сушильной машинки</p>
+    </div>
+    <div id="drying-hindi" class="instruction">
+        <h2>हिन्दी</h2>
+        <p>Текст инструкции на хинди для сушильной машинки</p>
+    </div>
+    <div id="drying-urdu" class="instruction">
+        <h2>اردو</h2>
+        <p>Текст инструкции на урду для сушильной машинки</p>
+    </div>
+    <div id="drying-serbo-croatian" class="instruction">
+        <h2>Српско-хрватски</h2>
+        <p>Текст инструкции на сербско-хорватском для сушильной машинки</p>
     </div>
 </body>
 </html>
