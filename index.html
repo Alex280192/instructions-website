@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructions for Washing and Drying Machines</title>
+    <style>
+        .instruction {
+            display: none; /* Скрыть все инструкции по умолчанию */
+        }
+        .language-link {
+            cursor: pointer; /* Изменить курсор на указатель при наведении */
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showInstruction(languageId) {
+            // Скрыть все инструкции
+            var instructions = document.querySelectorAll('.instruction');
+            instructions.forEach(function(instruction) {
+                instruction.style.display = 'none';
+            });
+
+            // Показать выбранную инструкцию
+            var selectedInstruction = document.getElementById(languageId);
+            selectedInstruction.style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <h1>Выберите устройство / Choose a device</h1>
@@ -14,15 +37,25 @@
         <img src="washing_machine.jpg" alt="Washing Machine" width="300">
         <p>Выберите язык / Choose a language:</p>
         <ul>
-            <li><a href="#washing-polish">Polski</a></li>
-            <li><a href="#washing-ukrainian">Українська</a></li>
-            <li><a href="#washing-romanian">Română</a></li>
-            <li><a href="#washing-bulgarian">Български</a></li>
-            <li><a href="#washing-russian">Русский</a></li>
-            <li><a href="#washing-hindi">हिन्दी</a></li>
-            <li><a href="#washing-urdu">اردو</a></li>
-            <li><a href="#washing-serbo-croatian">Српско-хрватски</a></li>
+            <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
+            <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
+            <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
+            <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
+            <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
+            <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
+            <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
+            <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
         </ul>
+        <!-- Инструкции для стиральной машинки на всех языках -->
+        <div id="washing-polish" class="instruction">
+            <h2>Polski</h2>
+            <p>[Текст инструкции на польском для стиральной машинки]</p>
+        </div>
+        <div id="washing-ukrainian" class="instruction">
+            <h2>Українська</h2>
+            <p>[Текст инструкции на украинском для стиральной машинки]</p>
+        </div>
+        <!-- Добавьте остальные инструкции для всех языков здесь -->
     </div>
 
     <!-- Раздел для сушильной машинки -->
@@ -31,41 +64,25 @@
         <img src="drying_machine.jpg" alt="Drying Machine" width="300">
         <p>Выберите язык / Choose a language:</p>
         <ul>
-            <li><a href="#drying-polish">Polski</a></li>
-            <li><a href="#drying-ukrainian">Українська</a></li>
-            <li><a href="#drying-romanian">Română</a></li>
-            <li><a href="#drying-bulgarian">Български</a></li>
-            <li><a href="#drying-russian">Русский</a></li>
-            <li><a href="#drying-hindi">हिन्दी</a></li>
-            <li><a href="#drying-urdu">اردو</a></li>
-            <li><a href="#drying-serbo-croatian">Српско-хрватски</a></li>
+            <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
+            <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
+            <li class="language-link" onclick="showInstruction('drying-romanian')">Română</li>
+            <li class="language-link" onclick="showInstruction('drying-bulgarian')">Български</li>
+            <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
+            <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
+            <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
+            <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
         </ul>
+        <!-- Инструкции для сушильной машинки на всех языках -->
+        <div id="drying-polish" class="instruction">
+            <h2>Polski</h2>
+            <p>[Текст инструкции на польском для сушильной машинки]</p>
+        </div>
+        <div id="drying-ukrainian" class="instruction">
+            <h2>Українська</h2>
+            <p>[Текст инструкции на украинском для сушильной машинки]</p>
+        </div>
+        <!-- Добавьте остальные инструкции для всех языков здесь -->
     </div>
-
-    <!-- Пример форматирования одной инструкции на польском для стиральной машинки -->
-    <h2 id="washing-polish">Polski - Instrukcja dla pralki</h2>
-    <p>
-        <strong>1. Przygotuj pranie:</strong><br>
-        Oddziel pranie według kolorów i rodzajów tkanin.<br>
-        Sprawdź kieszenie pod kątem małych przedmiotów i zapnij zamki oraz guziki.
-    </p>
-    <p>
-        <strong>2. Załaduj ubrania:</strong><br>
-        Otwórz drzwi pralki.<br>
-        Równomiernie załaduj pranie do bębna, unikając przepełnienia.
-    </p>
-    <p>
-        <strong>3. Wybierz program:</strong><br>
-        Obróć pokrętło lub naciśnij odpowiedni przycisk, aby wybrać program prania. Wybierz "normalny" lub "delikatny", w zależności od potrzeb.
-    </p>
-    <p>
-        <strong>4. Dostosuj temperaturę:</strong><br>
-        Wybierz ustawienie temperatury w zależności od poziomu zabrudzenia i rodzaju tkaniny. Wyższe temperatury pomagają w usuwaniu trudniejszych plam.
-    </p>
-    <p>
-        <strong>5. Dodaj detergent:</strong><br>
-        W zależności od tego, czy używasz proszku, czy płynu, umieść detergent w odpowiedniej przegródce lub bezpośrednio w bębnie.
-    </p>
-    <p>
-        <strong>6. Rozpocznij pranie:</strong><br>
-        Zamknij drzwi pralki i naciśnij pr
+</body>
+</html>
