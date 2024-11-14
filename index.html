@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             line-height: 1.5;
+            text-align: center; /* Центрирование логотипа */
         }
 
         img {
@@ -16,68 +17,82 @@
             height: auto;
         }
 
+        #logo {
+            width: 150px; /* Размер логотипа */
+            margin-bottom: 20px;
+        }
+
         .languages, .instruction {
             display: none; /* Скрыть все списки языков и инструкции по умолчанию */
         }
 
         .language-link, .device-link {
-            cursor: pointer; /* Изменить курсор на указатель при наведении */
+            cursor: pointer;
             color: blue;
             text-decoration: underline;
             display: block;
             margin: 10px 0;
         }
 
+        .back-button {
+            display: none; /* Скрыть кнопку "Назад" по умолчанию */
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
         /* Медиа-запросы для мобильных устройств */
         @media (max-width: 600px) {
             body {
-                font-size: 16px; /* Увеличить шрифт для удобства чтения */
+                font-size: 16px;
                 margin: 10px;
             }
 
             h1, h2 {
-                font-size: 1.5em; /* Масштабировать заголовки */
+                font-size: 1.5em;
             }
         }
     </style>
     <script>
         function showLanguages(deviceId) {
-            // Скрыть все списки языков и инструкции
-            var allLanguages = document.querySelectorAll('.languages');
-            var allInstructions = document.querySelectorAll('.instruction');
-            allLanguages.forEach(function(language) {
-                language.style.display = 'none';
-            });
-            allInstructions.forEach(function(instruction) {
-                instruction.style.display = 'none';
-            });
+            // Скрыть все инструкции и показать список языков
+            document.querySelectorAll('.languages').forEach(language => language.style.display = 'none');
+            document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
+            document.querySelector('.back-button').style.display = 'none';
 
             // Показать список языков для выбранного устройства
-            var selectedLanguages = document.getElementById(deviceId);
-            selectedLanguages.style.display = 'block';
+            document.getElementById(deviceId).style.display = 'block';
         }
 
         function showInstruction(languageId) {
-            // Скрыть все инструкции
-            var allInstructions = document.querySelectorAll('.instruction');
-            allInstructions.forEach(function(instruction) {
-                instruction.style.display = 'none';
-            });
+            // Скрыть все списки языков и показать выбранную инструкцию
+            document.querySelectorAll('.languages').forEach(language => language.style.display = 'none');
+            document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
+            
+            // Показать выбранную инструкцию и кнопку "Назад"
+            document.getElementById(languageId).style.display = 'block';
+            document.querySelector('.back-button').style.display = 'block';
+        }
 
-            // Показать выбранную инструкцию
-            var selectedInstruction = document.getElementById(languageId);
-            selectedInstruction.style.display = 'block';
+        function goBack() {
+            // Показать все списки языков и скрыть инструкции
+            document.querySelectorAll('.languages').forEach(language => language.style.display = 'block');
+            document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
+            document.querySelector('.back-button').style.display = 'none';
         }
     </script>
 </head>
 <body>
+    <!-- Логотип -->
+    <img src="logo.png" alt="Логотип" id="logo">
+
     <h1>Выберите устройство / Choose a device</h1>
 
     <!-- Раздел для стиральной машинки -->
     <div>
         <img src="washing_machine.jpg" alt="Стиральная машинка">
         <p class="device-link" onclick="showLanguages('washing-languages')">Стиральная машинка / Washing Machine</p>
-        <!-- Список языков для стиральной машинки -->
         <div id="washing-languages" class="languages">
             <h2>Стиральная машинка / Washing Machine</h2>
             <ul>
@@ -90,49 +105,6 @@
                 <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
                 <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
             </ul>
-
-            <!-- Инструкции для стиральной машинки -->
-            <div id="washing-polish" class="instruction">
-    <h2>Polski</h2>
-    <p>1. Przygotuj pranie: Oddziel pranie według kolorów i rodzajów tkanin. Sprawdź kieszenie na obecność małych przedmiotów i zapnij zamki oraz guziki.</p>
-    <p>2. Załaduj pranie: Otwórz drzwi pralki i równomiernie rozłóż pranie w bębnie, unikając przepełnienia.</p>
-    <p>3. Wybierz program: Użyj pokrętła lub przycisków, aby wybrać odpowiedni program prania. Wybierz „zwykły” lub „delikatny” w zależności od potrzeb.</p>
-    <p>4. Ustaw temperaturę: Wybierz temperaturę w zależności od stopnia zabrudzenia i rodzaju tkaniny. Wyższe temperatury pomagają usunąć trudniejsze plamy.</p>
-    <p>5. Dodaj detergent: Wlej odpowiednią ilość detergentu do wyznaczonej przegródki w szufladzie lub bezpośrednio do bębna, jeśli to konieczne.</p>
-    <p>6. Uruchom pralkę: Zamknij drzwi pralki i naciśnij przycisk „Start”, aby rozpocząć cykl prania.</p>
-    <p>7. Poczekaj na zakończenie: Poczekaj, aż pralka zakończy cykl prania. Czas trwania zależy od wybranego programu.</p>
-    <p>8. Wyjmij pranie: Po zakończeniu cyklu poczekaj, aż drzwi się odblokują, a następnie ostrożnie wyjmij czyste pranie.</p>
-    <p>9. Konserwacja: Po każdym cyklu oczyść uszczelkę z gumy i przegródkę na detergent. Regularnie sprawdzaj i czyść filtr, aby zapewnić optymalną wydajność pralki.</p>
-</div>
-
-            <div id="washing-ukrainian" class="instruction">
-                <h2>Українська</h2>
-                <p>Текст инструкции на украинском для стиральной машинки</p>
-            </div>
-            <div id="washing-romanian" class="instruction">
-                <h2>Română</h2>
-                <p>Текст инструкции на румынском для стиральной машинки</p>
-            </div>
-            <div id="washing-bulgarian" class="instruction">
-                <h2>Български</h2>
-                <p>Текст инструкции на болгарском для стиральной машинки</p>
-            </div>
-            <div id="washing-russian" class="instruction">
-                <h2>Русский</h2>
-                <p>Текст инструкции на русском для стиральной машинки</p>
-            </div>
-            <div id="washing-hindi" class="instruction">
-                <h2>हिन्दी</h2>
-                <p>Текст инструкции на хинди для стиральной машинки</p>
-            </div>
-            <div id="washing-urdu" class="instruction">
-                <h2>اردو</h2>
-                <p>Текст инструкции на урду для стиральной машинки</p>
-            </div>
-            <div id="washing-serbo-croatian" class="instruction">
-                <h2>Српско-хрватски</h2>
-                <p>Текст инструкции на сербско-хорватском для стиральной машинки</p>
-            </div>
         </div>
     </div>
 
@@ -140,7 +112,6 @@
     <div>
         <img src="drying_machine.jpg" alt="Сушильная машинка">
         <p class="device-link" onclick="showLanguages('drying-languages')">Сушильная машинка / Drying Machine</p>
-        <!-- Список языков для сушильной машинки -->
         <div id="drying-languages" class="languages">
             <h2>Сушильная машинка / Drying Machine</h2>
             <ul>
@@ -153,42 +124,214 @@
                 <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
                 <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
             </ul>
-
-            <!-- Инструкции для сушильной машинки -->
-            <div id="drying-polish" class="instruction">
-                <h2>Polski</h2>
-                <p>Текст инструкции на польском для сушильной машинки</p>
-            </div>
-            <div id="drying-ukrainian" class="instruction">
-                <h2>Українська</h2>
-                <p>Текст инструкции на украинском для сушильной машинки</p>
-            </div>
-            <div id="drying-romanian" class="instruction">
-                <h2>Română</h2>
-                <p>Текст инструкции на румынском для сушильной машинки</p>
-            </div>
-            <div id="drying-bulgarian" class="instruction">
-                <h2>Български</h2>
-                <p>Текст инструкции на болгарском для сушильной машинки</p>
-            </div>
-            <div id="drying-russian" class="instruction">
-                <h2>Русский</h2>
-                <p>Текст инструкции на русском для сушильной машинки</p>
-            </div>
-            <div id="drying-hindi" class="instruction">
-                <h2>हिन्दी</h2>
-                <p>Текст инструкции на хинди для сушильной машинки</p>
-            </div>
-            <div id="drying-urdu" class="instruction">
-                <h2>اردو</h2>
-                <p>Текст инструкции на урду для сушильной машинки</p>
-            </div>
-            <div id="drying-serbo-croatian" class="instruction">
-                <h2>Српско-хрватски</h2>
-                <p>Текст инструкции на сербско-хорватском для сушильной машинки</p>
-            </div>
         </div>
+    </div>
+
+    <!-- Кнопка "Назад" -->
+    <button class="back-button" onclick="goBack()">Назад / Back</button>
+
+    <!-- Инструкции для стиральной машинки на всех языках -->
+    <div id="washing-polish" class="instruction">
+        <h2>Polski</h2>
+        <p>1. Przygotuj pranie: Oddziel pranie według kolorów i rodzajów tkanin. Sprawdź kieszenie na obecność małych przedmiotów i zapnij zamki oraz guziki.</p>
+        <p>2. Załaduj pranie: Otwórz drzwi pralki i równomiernie rozłóż pranie w bębnie, unikając przepełnienia.</p>
+        <p>3. Wybierz program: Użyj pokrętła lub przycisków, aby wybrać odpowiedni program prania. Wybierz „zwykły” lub „delikatny” w zależności od potrzeb.</p>
+        <p>4. Ustaw temperaturę: Wybierz temperaturę w zależności od stopnia zabrudzenia i rodzaju tkaniny. Wyższe temperatury pomagają usunąć trudniejsze plamy.</p>
+        <p>5. Dodaj detergent: Wlej odpowiednią ilość detergentu do wyznaczonej przegródki w szufladzie lub bezpośrednio do bębna, jeśli to konieczne.</p>
+        <p>6. Uruchom pralkę: Zamknij drzwi pralki i naciśnij przycisk „Start”, aby rozpocząć cykl prania.</p>
+        <p>7. Poczekaj na zakończenie: Poczekaj, aż pralka zakończy cykl. Czas trwania zależy od wybranego programu.</p>
+        <p>8. Wyjmij pranie: Po zakończeniu cyklu poczekaj, aż drzwi się odblokują, a następnie ostrożnie wyjmij czyste pranie.</p>
+        <p>9. Konserwacja: Po każdym cyklu oczyść uszczelkę z gumy i przegródkę na detergent. Regularnie sprawdzaj i czyść filtr, aby zapewnić optymalną wydajność pralki.</p>
+    </div>
+    <div id="washing-ukrainian" class="instruction">
+        <h2>Українська</h2>
+        <p>1. Підготуйте білизну: Розсортуйте речі за кольорами та типами тканин. Перевірте кишені на наявність дрібних предметів і застебніть блискавки та гудзики.</p>
+        <p>2. Завантажте білизну: Відкрийте дверцята пральної машини та рівномірно розподіліть речі в барабані, уникаючи переповнення.</p>
+        <p>3. Виберіть програму: Використовуйте ручку або кнопки для вибору відповідної програми прання. Оберіть «звичайний» або «делікатний» режим залежно від ваших потреб.</p>
+        <p>4. Встановіть температуру: Оберіть температуру в залежності від рівня забруднення та типу тканини. Вищі температури допомагають видалити складні плями.</p>
+        <p>5. Додайте мийний засіб: Додайте відповідну кількість мийного засобу у спеціальну відсіку в шухляді або безпосередньо у барабан, якщо це потрібно.</p>
+        <p>6. Запустіть прання: Закрийте дверцята пральної машини і натисніть кнопку «Старт», щоб розпочати цикл прання.</p>
+        <p>7. Очікуйте завершення: Дочекайтеся завершення циклу прання. Тривалість залежить від обраної програми.</p>
+        <p>8. Вивантажте білизну: Після завершення циклу дочекайтеся розблокування дверцят, а потім обережно вийміть чисту білизну.</p>
+        <p>9. Догляд: Після кожного циклу очищуйте гумову ущільнювач і відсік для мийного засобу. Регулярно перевіряйте і чистіть фільтр для забезпечення оптимальної роботи пральної машини.</p>
+    </div>
+
+    <div id="washing-romanian" class="instruction">
+        <h2>Română</h2>
+        <p>1. Pregătiți rufele: Separați rufele după culori și tipuri de țesături. Verificați buzunarele pentru obiecte mici și închideți fermoarele și nasturii.</p>
+        <p>2. Încărcați rufele: Deschideți ușa mașinii de spălat și încărcați rufele uniform în tambur, evitând supraîncărcarea.</p>
+        <p>3. Selectați programul: Utilizați butonul rotativ sau butoanele pentru a selecta programul de spălare corespunzător. Alegeți „normal” sau „delicat”, în funcție de necesități.</p>
+        <p>4. Setați temperatura: Selectați temperatura în funcție de gradul de murdărie și tipul de țesătură. Temperaturile mai ridicate ajută la îndepărtarea petelor dificile.</p>
+        <p>5. Adăugați detergent: Turnați detergentul în compartimentul destinat din sertar sau direct în tambur, dacă este necesar.</p>
+        <p>6. Porniți mașina: Închideți ușa mașinii de spălat și apăsați butonul „Start” pentru a începe ciclul de spălare.</p>
+        <p>7. Așteptați finalizarea: Așteptați până când ciclul de spălare se termină. Durata depinde de programul selectat.</p>
+        <p>8. Descărcați rufele: După finalizarea ciclului, așteptați deblocarea ușii, apoi scoateți cu grijă rufele curate.</p>
+        <p>9. Întreținere: După fiecare ciclu, curățați garnitura de cauciuc și compartimentul pentru detergent. Verificați și curățați filtrul regulat pentru o performanță optimă.</p>
+    </div>
+
+    <div id="washing-bulgarian" class="instruction">
+        <h2>Български</h2>
+        <p>1. Подгответе прането: Разделете прането по цветове и видове тъкани. Проверете джобовете за малки предмети и закопчайте циповете и копчетата.</p>
+        <p>2. Заредете прането: Отворете вратата на пералната машина и равномерно разпределете прането в барабана, като избягвате претоварването.</p>
+        <p>3. Изберете програма: Използвайте въртящото се копче или бутоните, за да изберете подходяща програма за пране. Изберете „нормална“ или „деликатна“, в зависимост от нуждите.</p>
+        <p>4. Настройте температурата: Изберете температура в зависимост от степента на замърсяване и вида на тъканите. По-високите температури помагат за премахване на упорити петна.</p>
+        <p>5. Добавете препарат: Поставете подходящото количество препарат в предназначеното отделение на чекмеджето или директно в барабана, ако е необходимо.</p>
+        <p>6. Стартирайте пералнята: Затворете вратата на пералнята и натиснете бутона „Старт“, за да започнете цикъла на пране.</p>
+        <p>7. Изчакайте завършването: Изчакайте пералнята да завърши цикъла. Продължителността зависи от избраната програма.</p>
+        <p>8. Извадете прането: След като цикълът приключи, изчакайте вратата да се отключи и внимателно извадете чистото пране.</p>
+        <p>9. Поддръжка: След всеки цикъл почиствайте гуменото уплътнение и отделението за препарат. Редовно проверявайте и почиствайте филтъра за оптимална работа на пералнята.</p>
+    </div>
+
+    <div id="washing-russian" class="instruction">
+        <h2>Русский</h2>
+        <p>1. Подготовьте белье: Разделите белье по цветам и типам тканей. Проверьте карманы на наличие мелких предметов и застегните молнии и пуговицы.</p>
+        <p>2. Загрузите белье: Откройте дверцу стиральной машины и равномерно распределите белье в барабане, избегая перегрузки.</p>
+        <p>3. Выберите программу: Поверните ручку или нажмите кнопки, чтобы выбрать подходящую программу стирки. Выберите «обычная» или «деликатная» в зависимости от нужд.</p>
+        <p>4. Установите температуру: Выберите температуру в зависимости от степени загрязнения и типа ткани. Более высокие температуры помогают удалить стойкие пятна.</p>
+        <p>5. Добавьте моющее средство: Налейте моющее средство в предназначенное отделение в лотке или прямо в барабан, если это необходимо.</p>
+        <p>6. Запустите стирку: Закройте дверцу стиральной машины и нажмите кнопку «Старт», чтобы начать цикл стирки.</p>
+        <p>7. Подождите завершения: Дождитесь окончания цикла стирки. Продолжительность зависит от выбранной программы.</p>
+        <p>8. Выгрузите белье: После завершения цикла дождитесь, пока дверца разблокируется, затем аккуратно выньте чистое белье.</p>
+        <p>9. Уход: После каждого цикла протирайте резиновую прокладку и отсек для моющего средства. Регулярно проверяйте и очищайте фильтр для обеспечения оптимальной работы стиральной машины.</p>
+    </div>
+
+    <div id="washing-hindi" class="instruction">
+        <h2>हिन्दी</h2>
+        <p>1. कपड़े तैयार करें: रंगों और कपड़े के प्रकार के अनुसार कपड़े अलग करें। छोटी वस्तुओं के लिए जेबों की जाँच करें और जिपर और बटन बंद करें।</p>
+        <p>2. कपड़े लोड करें: वॉशिंग मशीन का दरवाजा खोलें और ड्रम में कपड़े समान रूप से डालें, ओवरफिलिंग से बचें।</p>
+        <p>3. कार्यक्रम चुनें: उपयुक्त धुलाई कार्यक्रम चुनने के लिए घुंडी घुमाएं या बटन दबाएं। अपनी आवश्यकताओं के अनुसार "सामान्य" या "मुलायम" चुनें।</p>
+        <p>4. तापमान सेट करें: गंदगी के स्तर और कपड़े के प्रकार के आधार पर तापमान चुनें। कठिन दाग हटाने में उच्च तापमान सहायक होते हैं।</p>
+        <p>5. डिटर्जेंट डालें: डिटर्जेंट को निर्दिष्ट कम्पार्टमेंट में डालें या आवश्यकता अनुसार सीधे ड्रम में डालें।</p>
+        <p>6. वॉश शुरू करें: वॉशिंग मशीन का दरवाजा बंद करें और "स्टार्ट" बटन दबाएं, ताकि धुलाई चक्र शुरू हो सके।</p>
+        <p>7. समाप्ति की प्रतीक्षा करें: धुलाई चक्र समाप्त होने तक प्रतीक्षा करें। अवधि चयनित कार्यक्रम पर निर्भर करती है।</p>
+        <p>8. कपड़े निकालें: चक्र समाप्त होने के बाद दरवाजा अनलॉक होने का इंतजार करें और सावधानी से साफ कपड़े निकालें।</p>
+        <p>9. देखभाल: प्रत्येक चक्र के बाद रबर सील और डिटर्जेंट कम्पार्टमेंट को पोंछें। वॉशिंग मशीन की सर्वोत्तम कार्यक्षमता बनाए रखने के लिए फ़िल्टर को नियमित रूप से जांचें और साफ करें।</p>
+    </div>
+
+    <div id="washing-urdu" class="instruction">
+        <h2>اردو</h2>
+        <p>1. کپڑوں کی تیاری کریں: رنگوں اور کپڑے کی اقسام کے مطابق کپڑوں کو الگ کریں۔ چھوٹی اشیاء کے لیے جیبیں چیک کریں اور زپ اور بٹن بند کریں۔</p>
+        <p>2. کپڑے لوڈ کریں: واشنگ مشین کا دروازہ کھولیں اور کپڑوں کو ڈرم میں یکساں طور پر ڈالیں، زیادہ بھرنے سے گریز کریں۔</p>
+        <p>3. پروگرام منتخب کریں: مناسب دھونے کا پروگرام منتخب کرنے کے لیے نوب گھمائیں یا بٹن دبائیں۔ اپنی ضروریات کے مطابق "عام" یا "نرم" کا انتخاب کریں۔</p>
+        <p>4. درجہ حرارت مرتب کریں: گندگی کی سطح اور کپڑے کی قسم کے مطابق درجہ حرارت منتخب کریں۔ ضدی داغوں کو ہٹانے میں زیادہ درجہ حرارت مددگار ثابت ہوتا ہے۔</p>
+        <p>5. ڈٹرجنٹ شامل کریں: ڈٹرجنٹ کو مخصوص خانے میں ڈالیں یا براہ راست ڈرم میں ڈالیں، اگر ضروری ہو۔</p>
+        <p>6. واش شروع کریں: واشنگ مشین کا دروازہ بند کریں اور "شروع کریں" بٹن دبائیں تاکہ دھونے کا چکر شروع ہو سکے۔</p>
+        <p>7. مکمل ہونے کا انتظار کریں: دھونے کے چکر کے مکمل ہونے کا انتظار کریں۔ دورانیہ منتخب کردہ پروگرام پر منحصر ہوتا ہے۔</p>
+        <p>8. کپڑے نکالیں: چکر مکمل ہونے کے بعد دروازہ ان لاک ہونے کا انتظار کریں اور احتیاط سے صاف کپڑے نکالیں۔</p>
+        <p>9. دیکھ بھال: ہر چکر کے بعد ربڑ کی مہر اور ڈٹرجنٹ کے خانے کو صاف کریں۔ واشنگ مشین کی بہترین کارکردگی کو یقینی بنانے کے لیے باقاعدگی سے فلٹر کو چیک اور صاف کریں۔</p>
+    </div>
+
+    <div id="washing-serbo-croatian" class="instruction">
+        <h2>Српско-хрватски</h2>
+        <p>1. Припремите веш: Сортирајте веш по бојама и типовима тканина. Проверите џепове за ситне предмете и затворите патентне затвараче и дугмад.</p>
+        <p>2. Убаците веш: Отворите врата машине за прање и равномерно распоредите веш у бубњу, избегавајући преоптерећење.</p>
+        <p>3. Изаберите програм: Окрените дугме или притисните тастере да изаберете одговарајући програм прања. Одаберите „редован“ или „нежан“ у зависности од потреба.</p>
+        <p>4. Подесите температуру: Изаберите температуру у зависности од степена запрљања и типа тканине. Више температуре помажу у уклањању упорних мрља.</p>
+        <p>5. Додајте детерџент: Сипајте детерџент у предвиђени одељак у фиоци или директно у бубањ, ако је потребно.</p>
+        <p>6. Покрените машину: Затворите врата машине за прање и притисните дугме „Старт“ да започнете циклус прања.</p>
+        <p>7. Сачекајте завршетак: Сачекајте да машина заврши циклус. Трајање зависи од изабраног програма.</p>
+        <p>8. Извадите веш: Након завршетка циклуса, сачекајте да се врата откључају, а затим пажљиво извадите чист веш.</p>
+        <p>9. Одржавање: Након сваког циклуса, обришите гумену заптивку и одељак за детерџент. Редовно проверавајте и чистите филтер како бисте осигурали оптималан рад машине.</p>
+    </div>
+
+    <!-- Инструкции для сушильной машинки на всех языках -->
+    <div id="drying-polish" class="instruction">
+        <h2>Polski</h2>
+        <p>1. Przygotuj ubrania: Oczyść filtr z kłaczków. Załaduj pranie do bębna, równomiernie je rozkładając.</p>
+        <p>2. Włącz suszarkę: Naciśnij przycisk „Power”, aby włączyć suszarkę.</p>
+        <p>3. Wybierz program: Wybierz odpowiedni program suszenia, jeśli to konieczne. W większości przypadków możesz po prostu nacisnąć „Start” dla trybu „Auto”.</p>
+        <p>4. Ustawienia dodatkowe: Opcjonalnie dostosuj czas suszenia i temperaturę.</p>
+        <p>5. Rozpocznij: Zamknij drzwi i naciśnij „Start”, aby rozpocząć suszenie.</p>
+        <p>6. Poczekaj na zakończenie: Poczekaj, aż cykl suszenia się zakończy. Suszarka zatrzyma się automatycznie.</p>
+        <p>7. Wyjmij ubrania: Ostrożnie wyjmij suche ubrania i odłóż je.</p>
+        <p>8. Wyłącz: Wyłącz suszarkę, naciskając przycisk „Power”.</p>
+    </div>
+
+    <div id="drying-ukrainian" class="instruction">
+        <h2>Українська</h2>
+        <p>1. Підготуйте білизну: Очистіть фільтр від ворсу. Завантажте білизну в барабан, рівномірно розподіляючи її.</p>
+        <p>2. Увімкніть сушарку: Натисніть кнопку «Power», щоб увімкнути сушарку.</p>
+        <p>3. Виберіть програму: Оберіть потрібну програму сушіння, якщо це необхідно. У більшості випадків можна просто натиснути «Start» для режиму «Auto».</p>
+        <p>4. Додаткові налаштування: За бажанням налаштуйте час сушіння і температуру.</p>
+        <p>5. Початок: Закрийте дверцята і натисніть «Start», щоб почати сушіння.</p>
+        <p>6. Очікуйте завершення: Дочекайтеся завершення циклу сушіння. Сушарка зупиниться автоматично.</p>
+        <p>7. Вийміть білизну: Обережно вийміть суху білизну і розкладіть її.</p>
+        <p>8. Вимкніть: Вимкніть сушарку, натиснувши кнопку «Power».</p>
+    </div>
+
+    <div id="drying-romanian" class="instruction">
+        <h2>Română</h2>
+        <p>1. Pregătiți rufele: Curățați filtrul de scame. Încărcați rufele în tambur, asigurând o distribuție uniformă.</p>
+        <p>2. Porniți uscătorul: Apăsați butonul „Power” pentru a porni uscătorul.</p>
+        <p>3. Selectați programul: Alegeți programul de uscare corespunzător, dacă este necesar. În majoritatea cazurilor, puteți apăsa „Start” pentru modul „Auto”.</p>
+        <p>4. Setări suplimentare: Opțional, ajustați timpul și temperatura de uscare.</p>
+        <p>5. Porniți: Închideți ușa și apăsați „Start” pentru a începe uscarea.</p>
+        <p>6. Așteptați finalizarea: Așteptați până când ciclul de uscare se termină. Uscătorul se va opri automat.</p>
+        <p>7. Scoateți rufele: Scoateți cu grijă rufele uscate și puneți-le la loc.</p>
+        <p>8. Opriți: Opriți uscătorul apăsând butonul „Power”.</p>
+    </div>
+
+    <div id="drying-bulgarian" class="instruction">
+        <h2>Български</h2>
+        <p>1. Подгответе дрехите: Почистете филтъра за власинки. Заредете дрехите в барабана, като ги разпределите равномерно.</p>
+        <p>2. Включете сушилнята: Натиснете бутона „Power“, за да включите сушилнята.</p>
+        <p>3. Изберете програма: Изберете подходящата програма за сушене, ако е необходимо. В повечето случаи може просто да натиснете „Старт“ за режим „Авто“.</p>
+        <p>4. Допълнителни настройки: По желание настройте времето за сушене и температурата.</p>
+        <p>5. Стартирайте: Затворете вратата и натиснете „Старт“, за да започнете сушенето.</p>
+        <p>6. Изчакайте завършването: Изчакайте сушилнята да завърши цикъла. Сушилнята ще се изключи автоматично.</p>
+        <p>7. Извадете дрехите: Внимателно извадете сухите дрехи и ги приберете.</p>
+        <p>8. Изключете: Изключете сушилнята, като натиснете бутона „Power“.</p>
+    </div>
+
+    <div id="drying-russian" class="instruction">
+        <h2>Русский</h2>
+        <p>1. Подготовьте одежду: Очистите фильтр от ворса. Загрузите одежду в барабан, равномерно распределив её.</p>
+        <p>2. Включите сушильную машину: Нажмите кнопку «Power», чтобы включить сушильную машину.</p>
+        <p>3. Выберите программу: Выберите соответствующую программу сушки, если это необходимо. В большинстве случаев можно просто нажать «Старт» для режима «Авто».</p>
+        <p>4. Дополнительные настройки: При необходимости отрегулируйте время и температуру сушки.</p>
+        <p>5. Начало: Закройте дверь и нажмите «Старт», чтобы начать сушку.</p>
+        <p>6. Ожидайте завершения: Дождитесь завершения цикла сушки. Сушильная машина остановится автоматически.</p>
+        <p>7. Достаньте одежду: Осторожно достаньте сухую одежду и уберите её.</p>
+        <p>8. Выключите: Выключите сушильную машину, нажав кнопку «Power».</p>
+    </div>
+
+    <div id="drying-hindi" class="instruction">
+        <h2>हिन्दी</h2>
+        <p>1. कपड़े तैयार करें: लिंट फिल्टर साफ करें। ड्रम में कपड़े समान रूप से लोड करें।</p>
+        <p>2. ड्रायर चालू करें: ड्रायर को चालू करने के लिए "पावर" बटन दबाएं।</p>
+        <p>3. कार्यक्रम का चयन करें: यदि आवश्यक हो, तो उपयुक्त ड्राईिंग कार्यक्रम चुनें। अधिकांश मामलों में, आप "ऑटो" मोड के लिए सीधे "स्टार्ट" दबा सकते हैं।</p>
+        <p>4. अतिरिक्त सेटिंग्स: विकल्प के रूप में, सुखाने का समय और तापमान समायोजित करें।</p>
+        <p>5. प्रारंभ करें: दरवाजा बंद करें और सुखाने को शुरू करने के लिए "स्टार्ट" दबाएं।</p>
+        <p>6. समाप्ति की प्रतीक्षा करें: सुखाने का चक्र समाप्त होने तक प्रतीक्षा करें। मशीन स्वचालित रूप से बंद हो जाएगी।</p>
+        <p>7. कपड़े निकालें: सावधानी से सूखे कपड़े निकालें और उन्हें रख दें।</p>
+        <p>8. बंद करें: "पावर" बटन दबाकर ड्रायर को बंद करें।</p>
+    </div>
+
+    <div id="drying-urdu" class="instruction">
+        <h2>اردو</h2>
+        <p>1. کپڑے تیار کریں: لنٹ فلٹر کو صاف کریں۔ کپڑوں کو یکساں طور پر ڈرم میں لوڈ کریں۔</p>
+        <p>2. ڈرائر آن کریں: ڈرائر کو آن کرنے کے لئے "پاور" بٹن دبائیں۔</p>
+        <p>3. پروگرام کا انتخاب کریں: اگر ضروری ہو تو موزوں خشک کرنے والا پروگرام منتخب کریں۔ زیادہ تر معاملات میں، آپ "آٹو" موڈ کے لئے سیدھے "اسٹارٹ" بٹن کو دبا سکتے ہیں۔</p>
+        <p>4. اضافی ترتیبات: اختیاری طور پر، خشک کرنے کے وقت اور درجہ حرارت کو ایڈجسٹ کریں۔</p>
+        <p>5. شروع کریں: دروازہ بند کریں اور "اسٹارٹ" بٹن دبا کر خشک کرنے کا عمل شروع کریں۔</p>
+        <p>6. مکمل ہونے کا انتظار کریں: خشک کرنے کا عمل ختم ہونے کا انتظار کریں۔ مشین خود بخود بند ہو جائے گی۔</p>
+        <p>7. کپڑے نکالیں: احتیاط سے خشک کپڑے نکالیں اور انہیں رکھ دیں۔</p>
+        <p>8. بند کریں: "پاور" بٹن دبا کر ڈرائر کو بند کریں۔</p>
+    </div>
+
+    <div id="drying-serbo-croatian" class="instruction">
+        <h2>Српско-хрватски</h2>
+        <p>1. Припремите одећу: Очистите филтер за влакна. Убаците одећу у бубањ, равномерно је распоредите.</p>
+        <p>2. Укључите сушач: Притисните дугме „Power“ да укључите сушач.</p>
+        <p>3. Изаберите програм: Ако је потребно, изаберите одговарајући програм сушења. У већини случајева можете једноставно притиснути „Start“ за режим „Auto“.</p>
+        <p>4. Додатна подешавања: Опционално подесите време сушења и температуру.</p>
+        <p>5. Почетак: Затворите врата и притисните „Start“ да започнете сушење.</p>
+        <p>6. Сачекајте завршетак: Сачекајте да циклус сушења буде готов. Сушач ће се аутоматски зауставити.</p>
+        <p>7. Извадите одећу: Пажљиво извадите суву одећу и одложите је.</p>
+        <p>8. Искључите: Искључите сушач притиском на дугме „Power“.</p>
     </div>
 </body>
 </html>
+
+
 
