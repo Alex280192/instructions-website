@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructions for Washing and Drying Machines</title>
     <style>
-        /* Стили для адаптации */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -74,66 +73,113 @@
 <body>
     <h1>Выберите устройство / Choose a device</h1>
 
-    <!-- Ссылки на устройства -->
+    <!-- Раздел для стиральной машинки -->
     <div>
-        <img src="washing_machine.jpg" alt="Стиральная машинка" width="300">
+        <img src="washing_machine.jpg" alt="Стиральная машинка">
         <p class="device-link" onclick="showLanguages('washing-languages')">Стиральная машинка / Washing Machine</p>
+        <!-- Список языков для стиральной машинки -->
+        <div id="washing-languages" class="languages">
+            <h2>Стиральная машинка / Washing Machine</h2>
+            <ul>
+                <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
+                <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
+                <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
+                <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
+                <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
+                <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
+                <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
+                <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
+            </ul>
+
+            <!-- Инструкции для стиральной машинки -->
+            <div id="washing-polish" class="instruction">
+                <h2>Polski</h2>
+                <p>Текст инструкции на польском для стиральной машинки</p>
+            </div>
+            <div id="washing-ukrainian" class="instruction">
+                <h2>Українська</h2>
+                <p>Текст инструкции на украинском для стиральной машинки</p>
+            </div>
+            <div id="washing-romanian" class="instruction">
+                <h2>Română</h2>
+                <p>Текст инструкции на румынском для стиральной машинки</p>
+            </div>
+            <div id="washing-bulgarian" class="instruction">
+                <h2>Български</h2>
+                <p>Текст инструкции на болгарском для стиральной машинки</p>
+            </div>
+            <div id="washing-russian" class="instruction">
+                <h2>Русский</h2>
+                <p>Текст инструкции на русском для стиральной машинки</p>
+            </div>
+            <div id="washing-hindi" class="instruction">
+                <h2>हिन्दी</h2>
+                <p>Текст инструкции на хинди для стиральной машинки</p>
+            </div>
+            <div id="washing-urdu" class="instruction">
+                <h2>اردو</h2>
+                <p>Текст инструкции на урду для стиральной машинки</p>
+            </div>
+            <div id="washing-serbo-croatian" class="instruction">
+                <h2>Српско-хрватски</h2>
+                <p>Текст инструкции на сербско-хорватском для стиральной машинки</p>
+            </div>
+        </div>
     </div>
+
+    <!-- Раздел для сушильной машинки -->
     <div>
-        <img src="drying_machine.jpg" alt="Сушильная машинка" width="300">
+        <img src="drying_machine.jpg" alt="Сушильная машинка">
         <p class="device-link" onclick="showLanguages('drying-languages')">Сушильная машинка / Drying Machine</p>
-    </div>
+        <!-- Список языков для сушильной машинки -->
+        <div id="drying-languages" class="languages">
+            <h2>Сушильная машинка / Drying Machine</h2>
+            <ul>
+                <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
+                <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
+                <li class="language-link" onclick="showInstruction('drying-romanian')">Română</li>
+                <li class="language-link" onclick="showInstruction('drying-bulgarian')">Български</li>
+                <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
+                <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
+                <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
+                <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
+            </ul>
 
-    <!-- Список языков для стиральной машинки -->
-    <div id="washing-languages" class="languages">
-        <h2>Стиральная машинка / Washing Machine</h2>
-        <ul>
-            <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
-            <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
-            <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
-            <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
-            <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
-            <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
-            <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
-            <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
-        </ul>
+            <!-- Инструкции для сушильной машинки -->
+            <div id="drying-polish" class="instruction">
+                <h2>Polski</h2>
+                <p>Текст инструкции на польском для сушильной машинки</p>
+            </div>
+            <div id="drying-ukrainian" class="instruction">
+                <h2>Українська</h2>
+                <p>Текст инструкции на украинском для сушильной машинки</p>
+            </div>
+            <div id="drying-romanian" class="instruction">
+                <h2>Română</h2>
+                <p>Текст инструкции на румынском для сушильной машинки</p>
+            </div>
+            <div id="drying-bulgarian" class="instruction">
+                <h2>Български</h2>
+                <p>Текст инструкции на болгарском для сушильной машинки</p>
+            </div>
+            <div id="drying-russian" class="instruction">
+                <h2>Русский</h2>
+                <p>Текст инструкции на русском для сушильной машинки</p>
+            </div>
+            <div id="drying-hindi" class="instruction">
+                <h2>हिन्दी</h2>
+                <p>Текст инструкции на хинди для сушильной машинки</p>
+            </div>
+            <div id="drying-urdu" class="instruction">
+                <h2>اردو</h2>
+                <p>Текст инструкции на урду для сушильной машинки</p>
+            </div>
+            <div id="drying-serbo-croatian" class="instruction">
+                <h2>Српско-хрватски</h2>
+                <p>Текст инструкции на сербско-хорватском для сушильной машинки</p>
+            </div>
+        </div>
     </div>
-
-    <!-- Список языков для сушильной машинки -->
-    <div id="drying-languages" class="languages">
-        <h2>Сушильная машинка / Drying Machine</h2>
-        <ul>
-            <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
-            <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
-            <li class="language-link" onclick="showInstruction('drying-romanian')">Română</li>
-            <li class="language-link" onclick="showInstruction('drying-bulgarian')">Български</li>
-            <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
-            <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
-            <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
-            <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
-        </ul>
-    </div>
-
-    <!-- Инструкции для стиральной машинки -->
-    <div id="washing-polish" class="instruction">
-        <h2>Polski</h2>
-        <p>Текст инструкции на польском для стиральной машинки</p>
-    </div>
-    <div id="washing-ukrainian" class="instruction">
-        <h2>Українська</h2>
-        <p>Текст инструкции на украинском для стиральной машинки</p>
-    </div>
-    <!-- Добавь остальные инструкции для стиральной машинки -->
-
-    <!-- Инструкции для сушильной машинки -->
-    <div id="drying-polish" class="instruction">
-        <h2>Polski</h2>
-        <p>Текст инструкции на польском для сушильной машинки</p>
-    </div>
-    <div id="drying-ukrainian" class="instruction">
-        <h2>Українська</h2>
-        <p>Текст инструкции на украинском для сушильной машинки</p>
-    </div>
-    <!-- Добавь остальные инструкции для сушильной машинки -->
 </body>
 </html>
+
