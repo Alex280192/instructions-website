@@ -63,7 +63,11 @@
             document.querySelector('.back-button').style.display = 'none';
             document.querySelector('.device-section').style.display = 'block';
 
-            document.getElementById(deviceId).style.display = 'block';
+            const selectedLanguages = document.getElementById(deviceId);
+            selectedLanguages.style.display = 'block';
+
+            // Прокрутка страницы к списку языков
+            selectedLanguages.scrollIntoView({ behavior: 'smooth' });
         }
 
         function showInstruction(languageId) {
@@ -71,7 +75,8 @@
             document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
             document.querySelector('.device-section').style.display = 'none';
 
-            document.getElementById(languageId).style.display = 'block';
+            const selectedInstruction = document.getElementById(languageId);
+            selectedInstruction.style.display = 'block';
             document.querySelector('.back-button').style.display = 'block';
         }
 
