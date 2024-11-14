@@ -5,13 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructions for Washing and Drying Machines</title>
     <style>
+        /* Стили для адаптации */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.5;
+        }
+
+        img {
+            max-width: 100%; /* Масштабирование изображений для мобильных устройств */
+            height: auto;
+        }
+
         .languages, .instruction {
             display: none; /* Скрыть все списки языков и инструкции по умолчанию */
         }
+
         .language-link, .device-link {
             cursor: pointer; /* Изменить курсор на указатель при наведении */
             color: blue;
             text-decoration: underline;
+            display: block;
+            margin: 10px 0;
+        }
+
+        /* Медиа-запросы для мобильных устройств */
+        @media (max-width: 600px) {
+            body {
+                font-size: 16px; /* Увеличить шрифт для удобства чтения */
+                margin: 10px;
+            }
+
+            h1, h2 {
+                font-size: 1.5em; /* Масштабировать заголовки */
+            }
         }
     </style>
     <script>
