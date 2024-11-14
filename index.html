@@ -9,21 +9,25 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             line-height: 1.5;
-            text-align: center; /* Центрирование логотипа */
+            text-align: center;
         }
 
         img {
-            max-width: 100%; /* Масштабирование изображений для мобильных устройств */
+            max-width: 100%; 
             height: auto;
         }
 
         #logo {
-            width: 150px; /* Размер логотипа */
+            width: 150px; 
             margin-bottom: 20px;
         }
 
-        .languages, .instruction {
-            display: none; /* Скрыть все списки языков и инструкции по умолчанию */
+        .languages, .instruction, .back-button {
+            display: none;
+        }
+
+        .device-section {
+            display: block;
         }
 
         .language-link, .device-link {
@@ -35,14 +39,12 @@
         }
 
         .back-button {
-            display: none; /* Скрыть кнопку "Назад" по умолчанию */
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
         }
 
-        /* Медиа-запросы для мобильных устройств */
         @media (max-width: 600px) {
             body {
                 font-size: 16px;
@@ -56,30 +58,28 @@
     </style>
     <script>
         function showLanguages(deviceId) {
-            // Скрыть все инструкции и показать список языков
             document.querySelectorAll('.languages').forEach(language => language.style.display = 'none');
             document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
             document.querySelector('.back-button').style.display = 'none';
+            document.querySelector('.device-section').style.display = 'block';
 
-            // Показать список языков для выбранного устройства
             document.getElementById(deviceId).style.display = 'block';
         }
 
         function showInstruction(languageId) {
-            // Скрыть все списки языков и показать выбранную инструкцию
             document.querySelectorAll('.languages').forEach(language => language.style.display = 'none');
             document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
-            
-            // Показать выбранную инструкцию и кнопку "Назад"
+            document.querySelector('.device-section').style.display = 'none';
+
             document.getElementById(languageId).style.display = 'block';
             document.querySelector('.back-button').style.display = 'block';
         }
 
         function goBack() {
-            // Показать все списки языков и скрыть инструкции
-            document.querySelectorAll('.languages').forEach(language => language.style.display = 'block');
+            document.querySelectorAll('.languages').forEach(language => language.style.display = 'none');
             document.querySelectorAll('.instruction').forEach(instruction => instruction.style.display = 'none');
             document.querySelector('.back-button').style.display = 'none';
+            document.querySelector('.device-section').style.display = 'block';
         }
     </script>
 </head>
@@ -87,44 +87,46 @@
     <!-- Логотип -->
     <img src="logo.png" alt="Логотип" id="logo">
 
-    <h1>Выберите устройство / Choose a device</h1>
-
-    <!-- Раздел для стиральной машинки -->
-    <div>
-        <img src="washing_machine.jpg" alt="Стиральная машинка">
-        <p class="device-link" onclick="showLanguages('washing-languages')">Стиральная машинка / Washing Machine</p>
-        <div id="washing-languages" class="languages">
-            <h2>Стиральная машинка / Washing Machine</h2>
-            <ul>
-                <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
-                <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
-                <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
-                <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
-                <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
-                <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
-                <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
-                <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
-            </ul>
+    <!-- Раздел с устройствами -->
+    <div class="device-section">
+        <h1>Выберите устройство / Choose a device</h1>
+        <div>
+            <img src="washing_machine.jpg" alt="Стиральная машинка">
+            <p class="device-link" onclick="showLanguages('washing-languages')">Стиральная машинка / Washing Machine</p>
+        </div>
+        <div>
+            <img src="drying_machine.jpg" alt="Сушильная машинка">
+            <p class="device-link" onclick="showLanguages('drying-languages')">Сушильная машинка / Drying Machine</p>
         </div>
     </div>
 
-    <!-- Раздел для сушильной машинки -->
-    <div>
-        <img src="drying_machine.jpg" alt="Сушильная машинка">
-        <p class="device-link" onclick="showLanguages('drying-languages')">Сушильная машинка / Drying Machine</p>
-        <div id="drying-languages" class="languages">
-            <h2>Сушильная машинка / Drying Machine</h2>
-            <ul>
-                <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
-                <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
-                <li class="language-link" onclick="showInstruction('drying-romanian')">Română</li>
-                <li class="language-link" onclick="showInstruction('drying-bulgarian')">Български</li>
-                <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
-                <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
-                <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
-                <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
-            </ul>
-        </div>
+    <!-- Списки языков и инструкции -->
+    <div id="washing-languages" class="languages">
+        <h2>Стиральная машинка / Washing Machine</h2>
+        <ul>
+            <li class="language-link" onclick="showInstruction('washing-polish')">Polski</li>
+            <li class="language-link" onclick="showInstruction('washing-ukrainian')">Українська</li>
+            <li class="language-link" onclick="showInstruction('washing-romanian')">Română</li>
+            <li class="language-link" onclick="showInstruction('washing-bulgarian')">Български</li>
+            <li class="language-link" onclick="showInstruction('washing-russian')">Русский</li>
+            <li class="language-link" onclick="showInstruction('washing-hindi')">हिन्दी</li>
+            <li class="language-link" onclick="showInstruction('washing-urdu')">اردو</li>
+            <li class="language-link" onclick="showInstruction('washing-serbo-croatian')">Српско-хрватски</li>
+        </ul>
+    </div>
+
+    <div id="drying-languages" class="languages">
+        <h2>Сушильная машинка / Drying Machine</h2>
+        <ul>
+            <li class="language-link" onclick="showInstruction('drying-polish')">Polski</li>
+            <li class="language-link" onclick="showInstruction('drying-ukrainian')">Українська</li>
+            <li class="language-link" onclick="showInstruction('drying-romanian')">Română</li>
+            <li class="language-link" onclick="showInstruction('drying-bulgarian')">Български</li>
+            <li class="language-link" onclick="showInstruction('drying-russian')">Русский</li>
+            <li class="language-link" onclick="showInstruction('drying-hindi')">हिन्दी</li>
+            <li class="language-link" onclick="showInstruction('drying-urdu')">اردو</li>
+            <li class="language-link" onclick="showInstruction('drying-serbo-croatian')">Српско-хрватски</li>
+        </ul>
     </div>
 
     <!-- Кнопка "Назад" -->
